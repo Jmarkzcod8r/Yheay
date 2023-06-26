@@ -1,113 +1,191 @@
-import Image from 'next/image'
+'use client';
+
+import Image from 'next/image';
+import Pic from '../Pics/pic.jpg';
+import Bags from '../Pics/Bags.jpg';
+import SimpleStore from '../Pics/Simple_store.png'
+import OldStore from '../Pics/old_store.png'
+import LightStore from '../Pics/light_store.png'
+
+import Candy from '../Pics/collection/candy.png'
+import Cafe from '../Pics/collection/cafe.png'
+import Accessories from '../Pics/collection/Accessories.png'
+import Bakery from '../Pics/collection/Bakery.png'
+import Burger from '../Pics/collection/Burger.png'
+import Clothes from '../Pics/collection/clothes.png'
+import Flowers from '../Pics/collection/Flowers.png'
+import Market from '../Pics/collection/Market.png'
+import Pizza from '../Pics/collection/Pizza.png'
+import Autoshop from '../Pics/collection/autoshop.png'
+import Petshop from '../Pics/collection/petshop.png'
+import Restaurant from '../Pics/collection/Restaurant.png'
+
+import Swal from "sweetalert2";
+import { handleClientScriptLoad } from 'next/script';
+
+
 
 export default function Home() {
+
+  function param(ok) {
+    console.log(ok)
+  }
+
+  function getNumberOfDays(month, year) {
+    return new Date(year, month, 0).getDate();
+  }
+
+
+  function handleClick (shop){
+
+    console.log('Hello, World!');
+    console.log(getNumberOfDays(2, 2023)); // Output: 28 (February 2023)
+    console.log(getNumberOfDays(9, 2023)); // Output: 30 (September 2023)
+    console.log(getNumberOfDays(12, 2022)); // Output: 31 (December 2022)
+
+    Swal.fire({
+      title: shop,
+      showDenyButton: true,
+      // showCancelButton: true,
+
+      confirmButtonText: 'Explore',
+      denyButtonText: `Build`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+
+}
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+    <div className="flex items-center justify-between bg-gray-800 text-white w-full p-4">
+       <button onClick={handleClick}>Home</button>
+       <button onClick={() => param('yo')}>About</button>
+       <button>Login</button>
+       <button>Sign Up</button>
+    </div>
+    {/* <div>
+    Explore</div> */}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+    <div className='relative'>
+    <div className='absolute justify-center text-center flex items-center bg-blue-700 w-full h-20 mt-8 '>
+        Enhance your online presence. Build a store with us today!
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
+
+    <Image src={Pic} alt="Logo" className='flex h-full '/>
+    </div>
+    {/* <Image src={'https://images.pexels.com/photos/1727684/pexels-photo-1727684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'} width={20} height={20} alt="Logo" className='flex h-full'/> */}
+
+
+    {/* <a href="#" className="sticky bottom-20 left-[90%]  bg-red-500 text-white px-4 py-2 rounded cursor-pointer">
+        Orders
+    </a> */}
+    {/* <div className="sticky bg-red-500 bottom-20">
+    <button  className="sticky  left-[90%]  bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+      style={{ position: '-webkit-sticky', position: 'sticky' }}
+    >
+        Products
+    </button>
+    <button  className="sticky  left-[80%]  bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+      style={{ position: '-webkit-sticky', position: 'sticky' }}
+    >
+        Products
+    </button>
+    </div> */}
+
+    <div className="max-w-screen max-w-full flex flex-wrap justify-around border-red-500 relative px-10">
+    {/* For Attribution:  */}
+    {/* <a href="https://www.freepik.com/free-vector/shop-store-showcase-set-flat_6180996.htm#query=coffee%20shop&position=30&from_view=keyword&track=ais">Image by sentavio</a> on Freepik */}
+
+
+      <button onClick={() => handleClick('Bakery')}>
+      <span className=' h-[180px] w-[200px]  bg-red-400 m-2 inline-block '>
+      <Image src={Bakery} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Cafe')}>
+      <span className=' h-[180px] w-[200px]  bg-red-400 m-2 inline-block'>
+      <Image src={Cafe} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Clothes')}>
+      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <Image src={Clothes} alt="Logo" className='flex h-full'/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Candy')}>
+      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <Image src={Candy} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Accessories')}>
+      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <Image src={Accessories} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Flowers')}>
+      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <Image src={Flowers} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Market')}>
+      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <Image src={Market} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Pizza')}>
+      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <Image src={Pizza} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Autoshop')}>
+      <span className=' h-[180px] w-[200px]  m-2 inline-block'>
+      <Image src={Autoshop} alt="Logo" className='flex h-full scale-[80%] '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Autoshop')}>
+      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <Image src={Autoshop} alt="Logo" className='flex h-full '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Restaurant')}>
+      <span className=' h-[180px] w-[200px] m-2 inline-block'>
+      <Image src={Restaurant} alt="Logo" className='flex h-full scale-[70%] '/>
+      </span>
+      </button>
+
+      <button onClick={() => handleClick('Pet Shop')}>
+      <span className=' h-[180px] w-[200px]  m-2 inline-block'>
+      <Image src={Petshop} alt="Logo" className='flex h-full scale-[70%] '/>
+      </span>
+      </button>
+
+
+
+
+
+
+    </div>
+
+
+</div>
   )
 }

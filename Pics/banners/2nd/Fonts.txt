@@ -1,0 +1,9 @@
+Fonts used in this design:
+
+Font: Dosis
+Author: Impallari Type
+Url: https://fonts.google.com/specimen/Dosis
+
+Font: Ephesis
+Author: Robert Leuschke
+Url: https://fonts.google.com/specimen/Ephesis
