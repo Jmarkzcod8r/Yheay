@@ -5,6 +5,8 @@ import Image from "next/image";
 import Bakery01 from "../../Pics/banners/1st/bakery01.jpg";
 import Bakery03 from "../../Pics/banners/2nd/bakery03.jpg";
 
+import Bakery from "../../Pics/collection/Bakery.png";
+
 import KitchenBanner from "../bakery_pics/kitchen-banner.png";
 import Profile01 from "../../Pics/profile/golden.jpeg";
 import Bakergirl from "../bakery_pics/bakergirl.jpg";
@@ -15,6 +17,9 @@ import Trolley from "../bakery_pics/trolley.png";
 import Star2 from "../bakery_pics/Starm.png";
 import Camera from "../bakery_pics/cam.png";
 import Profileguy from "../bakery_pics/profileguy.png";
+
+import Add from "../../Pics/Add.png";
+import Del from "../../Pics/Del.png";
 
 
 
@@ -60,11 +65,22 @@ export default function Page() {
     console.log(ok);
   }
 
+  const numbers = Array.from({ length: 5 }, (_, index) => index + 1);
+
 
 
   return (
     <div className="bg-gray-300    ">
       <h1>Current pixels: {screenSize}</h1>
+      <button className="">
+      <Image
+        src={Bakery}
+        alt="Image"
+        className="fixed bottom-5 right-5 z-10"
+        width={50}
+        height={45}
+      />
+      </button>
 
       <div className="h-55 sm:h-60 md:h-65 lg:h-70 xl:h-75 2xl:h-80 ">
         <Image src={Bakery03} alt="Logo" className="flex h-full" />
@@ -141,9 +157,34 @@ export default function Page() {
 
 
       </div>
-      <div className={`bg-gradient-to-br from-amber-100 to-yellow-500 min-h-[50vh]`}>
-          <button className={`${show === 'products' ? 'block' : 'hidden'} bg-slate-500`}>Add products</button>
+      <div className="flex flex-row relative bg-gradient-to-br from-amber-100 to-yellow-500 min-h-[50vh]">
+
+          <div  className={`${
+          show === 'products' ? 'block ' : 'hidden'
+        } relative z-10 bg-orange-600 h-40 w-10`} >
+      <button onClick={()=> console.log('hi')}
+        className={`${
+          show === 'products' ? 'block ' : 'hidden'
+        } h-10 w-10 relative z-10`}
+      >
+      <Image src={Add} title='Add' alt="Add Icon" className="absolute h-10 w-10 scale-90" />
+      </button>
+
+      <button onClick={()=> console.log('hi')}
+        className={`${
+          show === 'products' ? 'block ' : 'hidden'
+        } h-10 w-10 relative z-10`}
+      >
+      <Image src={Del} title='delete' alt="Add Icon" className="absolute h-10 w-10" />
+      </button>
+
       </div>
+      <div className="flex flex-row">
+      {numbers.map((number) => (
+        <div key={number} className="h-10 w-10 bg-red-400 m-1"></div>
+      ))}
+    </div>
+    </div>
           {/* <Collection show={show}/> */}
 
     </div>

@@ -73,8 +73,8 @@ export default function Home() {
       <div className='justify-between w-[40%] flex bg-pink-800'>
        <button onClick={handleClick}>Home</button>
        <button onClick={() => param('yo')}>About</button>
-       <button>Login</button>
-       <button>Sign Up</button>
+       <button onClick={() => window.open('/login', '_blank')}>Login</button>
+       <button onClick={() => window.open('/signup', '_blank')}>Sign Up</button>
        </div>
     </div>
     {/* <div>
