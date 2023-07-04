@@ -1,6 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+
 import Pic from '../Pics/pic.jpg';
 import Bags from '../Pics/Bags.jpg';
 import SimpleStore from '../Pics/Simple_store.png'
@@ -13,7 +15,7 @@ import Accessories from '../Pics/collection/Accessories.png'
 import Bakery from '../Pics/collection/Bakery.png'
 import Burger from '../Pics/collection/Burger.png'
 import Clothes from '../Pics/collection/clothes.png'
-import Flowers from '../Pics/collection/Flowers.png'
+import Flowers from '../Pics/collection/Flowers-nobg.png'
 import Market from '../Pics/collection/Market.png'
 import Pizza from '../Pics/collection/Pizza.png'
 import Autoshop from '../Pics/collection/autoshop.png'
@@ -26,6 +28,7 @@ import { handleClientScriptLoad } from 'next/script';
 
 
 export default function Home() {
+  const router = useRouter();
 
   function param(ok) {
     console.log(ok)
@@ -38,10 +41,10 @@ export default function Home() {
 
   function handleClick (shop){
 
-    console.log('Hello, World!');
-    console.log(getNumberOfDays(2, 2023)); // Output: 28 (February 2023)
-    console.log(getNumberOfDays(9, 2023)); // Output: 30 (September 2023)
-    console.log(getNumberOfDays(12, 2022)); // Output: 31 (December 2022)
+    // console.log('Hello, World!');
+    // console.log(getNumberOfDays(2, 2023)); // Output: 28 (February 2023)
+    // console.log(getNumberOfDays(9, 2023)); // Output: 30 (September 2023)
+    // console.log(getNumberOfDays(12, 2022)); // Output: 31 (December 2022)
 
     Swal.fire({
       title: shop,
@@ -55,7 +58,8 @@ export default function Home() {
       if (result.isConfirmed) {
         Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
+        router.push(`/${shop}`);
+        // Swal.fire('Changes are not saved', '', 'info')
       }
     })
 
@@ -65,22 +69,24 @@ export default function Home() {
 
 
 
-    <div className="flex items-center justify-between bg-gray-800 text-white w-full p-4">
+    <div className="flex items-center justify-center bg-gray-800 text-white w-full p-4">
+      <div className='justify-between w-[40%] flex bg-pink-800'>
        <button onClick={handleClick}>Home</button>
        <button onClick={() => param('yo')}>About</button>
        <button>Login</button>
        <button>Sign Up</button>
+       </div>
     </div>
     {/* <div>
     Explore</div> */}
 
     <div className='relative'>
-    <div className='absolute justify-center text-center flex items-center bg-blue-700 w-full h-20 mt-8 '>
+    <div className='absolute justify-center text-center flex items-center bg-blue-700 w-full h-20 mt-8 z-10'>
         Enhance your online presence. Build a store with us today!
 
     </div>
 
-    <Image src={Pic} alt="Logo" className='flex h-full '/>
+    <Image src={Pic} alt="Logo" className='flex relative h-screen '/>
     </div>
     {/* <Image src={'https://images.pexels.com/photos/1727684/pexels-photo-1727684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'} width={20} height={20} alt="Logo" className='flex h-full'/> */}
 
@@ -106,7 +112,7 @@ export default function Home() {
     {/* <a href="https://www.freepik.com/free-vector/shop-store-showcase-set-flat_6180996.htm#query=coffee%20shop&position=30&from_view=keyword&track=ais">Image by sentavio</a> on Freepik */}
 
 
-      <button onClick={() => handleClick('Bakery')}>
+      <button onClick={() => handleClick('bakery')}>
       <span className=' h-[180px] w-[200px]  bg-red-400 m-2 inline-block '>
       <Image src={Bakery} alt="Logo" className='flex h-full '/>
       </span>
@@ -137,7 +143,7 @@ export default function Home() {
       </button>
 
       <button onClick={() => handleClick('Flowers')}>
-      <span className=' h-[180px] w-[200px] bg-red-400 m-2 inline-block'>
+      <span className=' h-[180px] w-[200px] m-2 inline-block'>
       <Image src={Flowers} alt="Logo" className='flex h-full '/>
       </span>
       </button>
